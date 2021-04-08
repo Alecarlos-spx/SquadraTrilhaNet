@@ -45,6 +45,9 @@ namespace Aula2ExemploCrud
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Clínica Médica v1"));
             }
 
+      
+
+
             app.UseHttpsRedirection();
 
             app.UseRouting();

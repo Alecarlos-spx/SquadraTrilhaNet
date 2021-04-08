@@ -6,12 +6,7 @@ using System.Threading.Tasks;
 
 namespace Aula2ExemploCrud.Entities
 {
-    public enum periodo
-    {
-        manhã,
-        tarde,
-        noite
-    }
+  
     public class Medico
     {
         [Key]
@@ -20,7 +15,9 @@ namespace Aula2ExemploCrud.Entities
         public string nome { get; set; }
         public string especialidade { get; set; }
         public string telefone { get; set; }
-        public periodo periodoAtendimento { get; set; } 
-        public string diasSemanaAtendimento { get; set; }
+        public string crm { get; set; }
+        public bool situacao { get; set; }
+
+
     }
 }

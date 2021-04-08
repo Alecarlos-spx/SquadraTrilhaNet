@@ -17,7 +17,7 @@ namespace Aula2ExemploCrud.Context
 
         }
 
-        public DbSet<Medico> medico {get; set;}
+        public DbSet<Medico> medico { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

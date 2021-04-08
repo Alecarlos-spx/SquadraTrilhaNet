@@ -1,8 +1,10 @@
 ﻿using Aula2ExemploCrud.Context;
 using Aula2ExemploCrud.Entities;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Aula2ExemploCrud.Services
 {
@@ -16,40 +18,91 @@ namespace Aula2ExemploCrud.Services
             _ContextData = contextData;
         }
 
-        public bool AdicionarMedico(Medico medico)
+        public async Task<bool> AdicionarMedico(Medico medico)
         {
-            _ContextData.medico.Add(medico);
-            _ContextData.SaveChanges();
+            try
+            {
+                await _ContextData.medico.AddAsync(medico);
+                await _ContextData.SaveChangesAsync();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            
 
             return true;
         }
 
-        public bool AtualizarMedico(Medico novoMedico)
+     
+
+
+        public async Task<bool> AtualizarMedico(Medico novoMedico)
         {
-            _ContextData.medico.Attach(novoMedico);
-            _ContextData.Entry(novoMedico).State = EntityState.Modified;
-            _ContextData.SaveChanges();
-            return true;
+
+
+            //_______________________________ Gerou erro --> resolvi o erro quando transformei os metodos em assychrono
+
+            //_ContextData.Attach(novoMedico);
+            //_ContextData.Entry<Medico>(novoMedico).State = EntityState.Modified;
+
+            //________________________________
+
+
+            try
+            {
+                //_____________________________ resolução com medoto sem ser assychrono
+                //var local = _ContextData.Set<Medico>().Local.Where(t => t.id == novoMedico.id).FirstOrDefault();
+                //_ContextData.Entry(local).State = EntityState.Detached;
+                //_____________________________
+
+
+                //_________________________________ sendo assychrono funcionou sem ter problema no Attach
+                _ContextData.Attach(novoMedico);
+
+                _ContextData.Update(novoMedico);
+
+                await _ContextData.SaveChangesAsync();
+                return true;
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
 
         }
 
-        public bool DeletarMedico(int id)
+        public async Task<bool> DeletarMedico(int id)
         {
-            var idMedico = _ContextData.medico.Where(t => t.id == id).FirstOrDefault();
-            _ContextData.medico.Remove(idMedico);
-            _ContextData.SaveChanges();
 
-            return true;
+            try
+            {
+                var idMedico = _ContextData.medico.Where(t => t.id == id).FirstOrDefault();
+                _ContextData.medico.Remove(idMedico);
+                await _ContextData.SaveChangesAsync();
+
+                return true;
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
-        public List<Medico> RetornaListaMedicos()
+        public async Task<List<Medico>> RetornaListaMedicos()
         {
-            return _ContextData.medico.ToList();
+            return await _ContextData.medico.ToListAsync();
         }
 
-        public Medico RetornaMedicoId(int id)
+        public async  Task<Medico> RetornaMedicoId(int id)
         {
-            return _ContextData.medico.Where(t => t.id == id).FirstOrDefault();
+            return await _ContextData.medico.Where(t => t.id == id).FirstOrDefaultAsync();
             
         }
     }

@@ -8,11 +8,11 @@ namespace Aula2ExemploCrud.Services
 {
     public interface IMedicoService
     {
-        bool AdicionarMedico(Medico medico);
-        List<Medico> RetornaListaMedicos();
-        Medico RetornaMedicoId(int id);
-        bool AtualizarMedico(Medico novoMedico);
-        bool DeletarMedico(int id);
+        Task<bool> AdicionarMedico(Medico medico);
+        Task<List<Medico>> RetornaListaMedicos();
+        Task<Medico> RetornaMedicoId(int id);
+        Task<bool> AtualizarMedico(Medico novoMedico);
+        Task<bool> DeletarMedico(int id);
 
     }
 }
