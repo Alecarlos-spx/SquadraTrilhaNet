@@ -1,6 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Aula2ExemploCrud.Bordas_Interfaces.UseCases;
+using Aula2ExemploCrud.DTO.Medico.AdicionarMedico;
 using Aula2ExemploCrud.Entities;
 using Aula2ExemploCrud.Services;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System.Threading.Tasks;
 
@@ -13,10 +15,13 @@ namespace Aula2ExemploCrud.Controllers
         private readonly ILogger<MedicoController> _logger;
         private readonly IMedicoService _medicoService;
 
-        public MedicoController(ILogger<MedicoController> logger, IMedicoService medicoService)
+        private readonly IAdicionarMedicoUseCase _adicionarMedicoUseCase;
+
+        public MedicoController(ILogger<MedicoController> logger, IMedicoService medicoService, IAdicionarMedicoUseCase adicionarMedicoUseCase)
         {
             _logger = logger;
             _medicoService = medicoService;
+            _adicionarMedicoUseCase = adicionarMedicoUseCase;
         }
 
 
@@ -58,20 +63,14 @@ namespace Aula2ExemploCrud.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] Medico medico)
+        public IActionResult Post([FromBody] AdicionarMedicoRequest novoMedico)
         {
             if (!ModelState.IsValid)
             {
-                return BadRequest(medico);
+                return BadRequest(novoMedico);
             }
-            try
-            {
-                return Ok(await _medicoService.AdicionarMedico(medico));
-            }
-            catch (System.Exception ex)
-            {
-                return BadRequest(new { erro = ex, msg= "Id não encontrado" });
-            }
+
+            return Ok(_adicionarMedicoUseCase.Executar(novoMedico));
         }
 
         [HttpDelete("{id}")]

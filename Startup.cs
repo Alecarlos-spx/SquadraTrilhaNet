@@ -1,5 +1,11 @@
+using Aula2ExemploCrud.Adapter;
+using Aula2ExemploCrud.Bordas___Interfaces.UseCases.Repositorio;
+using Aula2ExemploCrud.Bordas_Interfaces.Adapter;
+using Aula2ExemploCrud.Bordas_Interfaces.UseCases;
 using Aula2ExemploCrud.Context;
+using Aula2ExemploCrud.Repositorios;
 using Aula2ExemploCrud.Services;
+using Aula2ExemploCrud.UseCase.Medico;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -26,7 +32,21 @@ namespace Aula2ExemploCrud
             services.AddEntityFrameworkNpgsql().AddDbContext<ContextData>(opt => opt.UseNpgsql
             (Configuration.GetConnectionString("bancoClinica")));
 
+            #region Implementação de Interfaces de Medico
+
             services.AddScoped<IMedicoService, MedicoService>();
+
+            services.AddScoped<IRepositorioMedicos, RepositorioMedicos>();
+
+            services.AddScoped<IAdicionarMedicoUseCase, AdicionarMedicoUseCase>();
+            services.AddScoped<IAtualizarMedicoUseCases, AtualizarMedicoUseCases>();
+            services.AddScoped<IDeletarMedicoUseCase, DeletarMedicoUseCase>();
+            services.AddScoped<IRetornaListaMedicosUseCase, RetornaListaMedicosUseCase>();
+            services.AddScoped<IRetornaMedicoIdUseCase, RetornaMedicoIdUseCase>();
+
+            services.AddScoped<IAdicionarMedicoAdapter, AdicionarMedicoAdapter>();
+
+            #endregion
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
