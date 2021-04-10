@@ -8,6 +8,6 @@ namespace Aula2ExemploCrud.Bordas_Interfaces.UseCases
 {
     public interface IRetornaListaMedicosUseCase
     {
-        RetornarListaMedicosResponse Executar(RetornarListaMedicosRequest request);
+        RetornarListaMedicosResponse Executar();
     }
 }

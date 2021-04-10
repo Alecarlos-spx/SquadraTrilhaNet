@@ -8,5 +8,6 @@ namespace Aula2ExemploCrud.DTO.Medico.AdicionarMedico
     public class AdicionarMedicoResponse
     {
         public string msg { get; set; }
+        public int id { get; set; }
     }
 }

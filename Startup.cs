@@ -4,7 +4,6 @@ using Aula2ExemploCrud.Bordas_Interfaces.Adapter;
 using Aula2ExemploCrud.Bordas_Interfaces.UseCases;
 using Aula2ExemploCrud.Context;
 using Aula2ExemploCrud.Repositorios;
-using Aula2ExemploCrud.Services;
 using Aula2ExemploCrud.UseCase.Medico;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -34,8 +33,6 @@ namespace Aula2ExemploCrud
 
             #region Implementação de Interfaces de Medico
 
-            services.AddScoped<IMedicoService, MedicoService>();
-
             services.AddScoped<IRepositorioMedicos, RepositorioMedicos>();
 
             services.AddScoped<IAdicionarMedicoUseCase, AdicionarMedicoUseCase>();
@@ -45,6 +42,10 @@ namespace Aula2ExemploCrud
             services.AddScoped<IRetornaMedicoIdUseCase, RetornaMedicoIdUseCase>();
 
             services.AddScoped<IAdicionarMedicoAdapter, AdicionarMedicoAdapter>();
+            services.AddScoped<IAtualizarMedicoAdapter, AtualizarMedicoAdapter>();
+            services.AddScoped<IRetornaMedicoIdAdapter, RetornaMedicoIdAdapter>();
+            
+            
 
             #endregion
 

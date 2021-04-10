@@ -3,9 +3,6 @@ using Aula2ExemploCrud.Bordas_Interfaces.Adapter;
 using Aula2ExemploCrud.Bordas_Interfaces.UseCases;
 using Aula2ExemploCrud.DTO.Medico.AdicionarMedico;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Aula2ExemploCrud.UseCase.Medico
 {
@@ -29,6 +26,7 @@ namespace Aula2ExemploCrud.UseCase.Medico
                 var medicoAdicionar = _adapter.converterRequestParaMedico(request);
                 _repositorioMedicos.Add(medicoAdicionar);
                 response.msg = "Adicionado com sucesso";
+                response.id = medicoAdicionar.id;
                 return response;
 
             }

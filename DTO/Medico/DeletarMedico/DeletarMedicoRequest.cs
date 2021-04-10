@@ -7,5 +7,6 @@ namespace Aula2ExemploCrud.DTO.Medico.DeletarMedico
 {
     public class DeletarMedicoRequest
     {
+        public int id { get; set; }
     }
 }
