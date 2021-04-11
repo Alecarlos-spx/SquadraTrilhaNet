@@ -62,7 +62,14 @@ namespace Aula2ExemploCrud.Controllers
                 return BadRequest(novoMedico);
             }
 
-            return Ok(_adicionarMedicoUseCase.Executar(novoMedico));
+            var response = _adicionarMedicoUseCase.Executar(novoMedico);
+
+            if (response.erros.Count > 0)
+            {
+                return BadRequest(response);
+            } 
+
+            return Ok(response);
         }
 
         [HttpDelete("{id}")]
@@ -90,8 +97,14 @@ namespace Aula2ExemploCrud.Controllers
             {
                 return BadRequest(medicoAtualizar);
             }
+            var response = _atualizarMedicoUseCases.Executar(medicoAtualizar, id);
 
-            return Ok(_atualizarMedicoUseCases.Executar(medicoAtualizar, id));
+            if (response.erros.Count > 0)
+            {
+                return BadRequest(response);
+            }
+
+            return Ok(response);
         }
 
     }

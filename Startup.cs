@@ -41,9 +41,9 @@ namespace Aula2ExemploCrud
             services.AddScoped<IRetornaListaMedicosUseCase, RetornaListaMedicosUseCase>();
             services.AddScoped<IRetornaMedicoIdUseCase, RetornaMedicoIdUseCase>();
 
-            services.AddScoped<IAdicionarMedicoAdapter, AdicionarMedicoAdapter>();
-            services.AddScoped<IAtualizarMedicoAdapter, AtualizarMedicoAdapter>();
-            services.AddScoped<IRetornaMedicoIdAdapter, RetornaMedicoIdAdapter>();
+            services.AddTransient<IAdicionarMedicoAdapter, AdicionarMedicoAdapter>();
+            services.AddTransient<IAtualizarMedicoAdapter, AtualizarMedicoAdapter>();
+            services.AddTransient<IRetornaMedicoIdAdapter, RetornaMedicoIdAdapter>();
             
             
 

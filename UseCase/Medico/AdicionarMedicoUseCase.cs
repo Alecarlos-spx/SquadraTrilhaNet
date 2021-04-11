@@ -2,7 +2,9 @@
 using Aula2ExemploCrud.Bordas_Interfaces.Adapter;
 using Aula2ExemploCrud.Bordas_Interfaces.UseCases;
 using Aula2ExemploCrud.DTO.Medico.AdicionarMedico;
+using Aula2ExemploCrud.Validator.Medico;
 using System;
+using System.Collections.Generic;
 
 namespace Aula2ExemploCrud.UseCase.Medico
 {
@@ -20,12 +22,22 @@ namespace Aula2ExemploCrud.UseCase.Medico
         public AdicionarMedicoResponse Executar(AdicionarMedicoRequest request)
         {
             var response = new AdicionarMedicoResponse();
+            var validacao = new AdicionarMedicoRequestValidator();
 
             try
             {
+                response = validacao.ValidarCamposAdicionarMedico(request);
+
+
+                if (response.erros.Count > 0)
+                {
+                    response.msg.Add("Erro ao adicionar o produto");
+                    return response;
+                }
+
                 var medicoAdicionar = _adapter.converterRequestParaMedico(request);
                 _repositorioMedicos.Add(medicoAdicionar);
-                response.msg = "Adicionado com sucesso";
+                response.msg.Add("Adicionado com sucesso");
                 response.id = medicoAdicionar.id;
                 return response;
 
@@ -33,7 +45,7 @@ namespace Aula2ExemploCrud.UseCase.Medico
             catch (Exception)
             {
 
-                response.msg = "Erro ao adicionar o produto";
+                response.msg.Add("Erro ao adicionar o produto");
                 return response;
             }
             

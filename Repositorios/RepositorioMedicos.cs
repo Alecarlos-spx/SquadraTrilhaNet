@@ -1,7 +1,7 @@
 ﻿using Aula2ExemploCrud.Bordas___Interfaces.UseCases.Repositorio;
 using Aula2ExemploCrud.Context;
-using Aula2ExemploCrud.DTO.Medico.AdicionarMedico;
 using Aula2ExemploCrud.Entities;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -26,7 +26,13 @@ namespace Aula2ExemploCrud.Repositorios
 
         public int Update(Medico request)
         {
-            _context.Attach<Medico>(request);
+            var local = _context.Set<Medico>().Local.Where(x => x.id == request.id).FirstOrDefault();
+            if(local != null)
+            {
+                _context.Entry(local).State = EntityState.Detached;
+            }
+            //_context.Attach<Medico>(request);
+          
             _context.medico.Update(request);
             _context.SaveChanges();
             return request.id;

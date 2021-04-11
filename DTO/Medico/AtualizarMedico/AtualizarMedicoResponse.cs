@@ -7,7 +7,9 @@ namespace Aula2ExemploCrud.DTO.Medico.AtualizarMedico
 {
     public class AtualizarMedicoResponse
     {
-        public string msg { get; set; }
+        public List<string> msg { get; set; } = new List<string>();
+
+        public List<string> erros { get; set; } = new List<string>();
         public int id { get; set; }
     }
 }
