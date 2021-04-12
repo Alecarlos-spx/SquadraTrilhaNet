@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Aula2ExemploCrud.Bordas_Interfaces.UseCases
 {
-    public interface IRetornaListaMedicosUseCase
+    public interface IRetornarListaMedicosUseCase
     {
         RetornarListaMedicosResponse Executar();
     }

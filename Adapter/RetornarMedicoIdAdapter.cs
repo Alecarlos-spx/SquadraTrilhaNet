@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace Aula2ExemploCrud.Adapter
 {
-    public class RetornaMedicoIdAdapter : IRetornaMedicoIdAdapter
+    public class RetornarMedicoIdAdapter : IRetornarMedicoIdAdapter
     {
-        public RetornaMedicoIdResponse converterMedicoParaResponse(Medico medico)
+        public RetornarMedicoIdResponse converterMedicoParaResponse(Medico medico)
         {
-            var response = new RetornaMedicoIdResponse();
+            var response = new RetornarMedicoIdResponse();
             response.id = medico.id;
             response.nome = medico.nome;
             response.especialidade = medico.especialidade;
@@ -26,7 +26,7 @@ namespace Aula2ExemploCrud.Adapter
             return response;
         }
 
-        public Medico converterRequestParaMedico(RetornaMedicoIdRequest request)
+        public Medico converterRequestParaMedico(RetornarMedicoIdRequest request)
         {
             var MedicoPorId = new Medico();
             MedicoPorId.id = request.id;

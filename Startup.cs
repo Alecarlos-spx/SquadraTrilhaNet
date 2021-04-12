@@ -38,12 +38,12 @@ namespace Aula2ExemploCrud
             services.AddScoped<IAdicionarMedicoUseCase, AdicionarMedicoUseCase>();
             services.AddScoped<IAtualizarMedicoUseCases, AtualizarMedicoUseCases>();
             services.AddScoped<IDeletarMedicoUseCase, DeletarMedicoUseCase>();
-            services.AddScoped<IRetornaListaMedicosUseCase, RetornaListaMedicosUseCase>();
-            services.AddScoped<IRetornaMedicoIdUseCase, RetornaMedicoIdUseCase>();
+            services.AddScoped<IRetornarListaMedicosUseCase, RetornarListaMedicosUseCase>();
+            services.AddScoped<IRetornarMedicoIdUseCase, RetornarMedicoIdUseCase>();
 
             services.AddTransient<IAdicionarMedicoAdapter, AdicionarMedicoAdapter>();
             services.AddTransient<IAtualizarMedicoAdapter, AtualizarMedicoAdapter>();
-            services.AddTransient<IRetornaMedicoIdAdapter, RetornaMedicoIdAdapter>();
+            services.AddTransient<IRetornarMedicoIdAdapter, RetornarMedicoIdAdapter>();
             
             
 

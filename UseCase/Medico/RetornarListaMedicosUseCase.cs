@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace Aula2ExemploCrud.UseCase.Medico
 {
-    public class RetornaListaMedicosUseCase : IRetornaListaMedicosUseCase
+    public class RetornarListaMedicosUseCase : IRetornarListaMedicosUseCase
     {
         private readonly IRepositorioMedicos _repositorioMedicos;
 
-        public RetornaListaMedicosUseCase(IRepositorioMedicos repositorioMedicos)
+        public RetornarListaMedicosUseCase(IRepositorioMedicos repositorioMedicos)
         {
             _repositorioMedicos = repositorioMedicos;
         }
@@ -25,14 +25,14 @@ namespace Aula2ExemploCrud.UseCase.Medico
             try
             {
                 response.medicos = _repositorioMedicos.Get();
-                response.msg = "Lista de Médicos";
+                response.msg.Add("Lista de Médicos!");
 
                 return response;
             }
             catch (Exception)
             {
 
-                response.msg = "Erro ao listar os médicos";
+                response.msg.Add("Erro ao listar os médicos!");
                 return response;
             }
         }

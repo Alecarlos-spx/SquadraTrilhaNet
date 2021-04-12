@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace Aula2ExemploCrud.Bordas_Interfaces.UseCases
 {
-    public interface IRetornaMedicoIdUseCase
+    public interface IRetornarMedicoIdUseCase
     {
-        RetornaMedicoIdResponse Executar(RetornaMedicoIdRequest request);
+        RetornarMedicoIdResponse Executar(RetornarMedicoIdRequest request);
     }
 }

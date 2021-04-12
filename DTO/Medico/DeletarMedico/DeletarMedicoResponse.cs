@@ -7,6 +7,6 @@ namespace Aula2ExemploCrud.DTO.Medico.DeletarMedico
 {
     public class DeletarMedicoResponse
     {
-        public string msg { get; set; }
+        public List<string> msg { get; set; } = new List<string>();
     }
 }

@@ -31,7 +31,7 @@ namespace Aula2ExemploCrud.UseCase.Medico
 
                 if (response.erros.Count > 0)
                 {
-                    response.msg.Add("Erro ao adicionar o produto");
+                    response.msg.Add("Erro ao adicionar o medico");
                     return response;
                 }
 
@@ -45,7 +45,7 @@ namespace Aula2ExemploCrud.UseCase.Medico
             catch (Exception)
             {
 
-                response.msg.Add("Erro ao adicionar o produto");
+                response.msg.Add("Erro ao adicionar o medico");
                 return response;
             }
             

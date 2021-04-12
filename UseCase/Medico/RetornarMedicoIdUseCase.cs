@@ -6,37 +6,37 @@ using System;
 
 namespace Aula2ExemploCrud.UseCase.Medico
 {
-    public class RetornaMedicoIdUseCase : IRetornaMedicoIdUseCase
+    public class RetornarMedicoIdUseCase : IRetornarMedicoIdUseCase
     {
         private readonly IRepositorioMedicos _repositorioMedicos;
-        private readonly IRetornaMedicoIdAdapter _adapter;
+        private readonly IRetornarMedicoIdAdapter _adapter;
 
-        public RetornaMedicoIdUseCase(IRepositorioMedicos repositorioMedicos, IRetornaMedicoIdAdapter adapter)
+        public RetornarMedicoIdUseCase(IRepositorioMedicos repositorioMedicos, IRetornarMedicoIdAdapter adapter)
         {
             _repositorioMedicos = repositorioMedicos;
             _adapter = adapter;
         }
 
-        public RetornaMedicoIdResponse Executar(RetornaMedicoIdRequest request)
+        public RetornarMedicoIdResponse Executar(RetornarMedicoIdRequest request)
         {
-            var response = new RetornaMedicoIdResponse();
+            var response = new RetornarMedicoIdResponse();
 
             try
             {
                 var medico = _repositorioMedicos.GetId(request.id);
                 if (medico == null)
                 {
-                    response.msg = "Erro ao pesquisar o médico";
+                    response.msg.Add("Erro ao pesquisar o médico");
                     return response;
                 }
                 response = _adapter.converterMedicoParaResponse(medico);
-                response.msg = "Pesquisa realizada com sucesso!";
+                response.msg.Add("Pesquisa realizada com sucesso!");
                 return response;
             }
             catch (Exception)
             {
 
-                response.msg = "Erro ao pesquisar o médico";
+                response.msg.Add("Erro ao pesquisar o médico");
                 return response;
             }
         }

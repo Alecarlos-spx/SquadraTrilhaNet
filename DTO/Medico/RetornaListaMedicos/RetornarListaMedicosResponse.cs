@@ -5,7 +5,7 @@ namespace Aula2ExemploCrud.DTO.Medico.RetornaListaMedicos
 {
     public class RetornarListaMedicosResponse
     {
-        public List<MedicoEntidade> medicos { get; set; }
-        public string msg { get; set; }
+        public List<MedicoEntidade> medicos { get; set; } = new List<MedicoEntidade>();
+        public List<string> msg { get; set; } = new List<string>();
     }
 }

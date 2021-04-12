@@ -26,18 +26,18 @@ namespace Aula2ExemploCrud.UseCase.Medico
                 var medico = _repositorioMedicos.GetId(request.id);
                 if (medico == null)
                 {
-                    response.msg = "Erro ao excluir o médico";
+                    response.msg.Add("Erro ao excluir o médico!");
                     return response;
                 }
 
                 _repositorioMedicos.Delete(request.id);
-                response.msg = "Excluido com sucesso";
+                response.msg.Add("Excluido com sucesso!");
                 return response;
             }
             catch (Exception)
             {
 
-                response.msg = "Erro ao excluir o médico";
+                response.msg.Add("Erro ao excluir o médico!");
                 return response;
 
             }

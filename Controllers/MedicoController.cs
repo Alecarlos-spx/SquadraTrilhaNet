@@ -18,10 +18,10 @@ namespace Aula2ExemploCrud.Controllers
         private readonly IAdicionarMedicoUseCase _adicionarMedicoUseCase;
         private readonly IAtualizarMedicoUseCases _atualizarMedicoUseCases;
         private readonly IDeletarMedicoUseCase _deletarMedicoUseCase;
-        private readonly IRetornaMedicoIdUseCase _retornaMedicoIdUseCase;
-        private readonly IRetornaListaMedicosUseCase _retornaListaMedicosUseCase;
+        private readonly IRetornarMedicoIdUseCase _retornaMedicoIdUseCase;
+        private readonly IRetornarListaMedicosUseCase _retornaListaMedicosUseCase;
 
-        public MedicoController(ILogger<MedicoController> logger, IAdicionarMedicoUseCase adicionarMedicoUseCase, IAtualizarMedicoUseCases atualizarMedicoUseCases, IDeletarMedicoUseCase deletarMedicoUseCase, IRetornaMedicoIdUseCase retornaMedicoIdUseCase, IRetornaListaMedicosUseCase retornaListaMedicosUseCase)
+        public MedicoController(ILogger<MedicoController> logger, IAdicionarMedicoUseCase adicionarMedicoUseCase, IAtualizarMedicoUseCases atualizarMedicoUseCases, IDeletarMedicoUseCase deletarMedicoUseCase, IRetornarMedicoIdUseCase retornaMedicoIdUseCase, IRetornarListaMedicosUseCase retornaListaMedicosUseCase)
         {
             _logger = logger;
             _adicionarMedicoUseCase = adicionarMedicoUseCase;
@@ -47,7 +47,7 @@ namespace Aula2ExemploCrud.Controllers
             {
                 return BadRequest("Id não encontrado");
             }
-            var request = new RetornaMedicoIdRequest();
+            var request = new RetornarMedicoIdRequest();
             request.id = id;
 
             return Ok(_retornaMedicoIdUseCase.Executar(request));

@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Aula2ExemploCrud.DTO.Medico.RetornaMedicoId
 {
-    public class RetornaMedicoIdResponse
+    public class RetornarMedicoIdRequest
     {
         public int id { get; set; }
         public string nome { get; set; }
@@ -13,6 +13,6 @@ namespace Aula2ExemploCrud.DTO.Medico.RetornaMedicoId
         public string telefone { get; set; }
         public string crm { get; set; }
         public bool situacao { get; set; }
-        public string msg { get; set; }
+
     }
 }

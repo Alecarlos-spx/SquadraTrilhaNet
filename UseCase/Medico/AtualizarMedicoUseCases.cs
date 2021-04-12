@@ -36,7 +36,7 @@ namespace Aula2ExemploCrud.UseCase.Medico
 
                 if (response.erros.Count > 0)
                 {
-                    response.msg.Add("Erro ao atualizar o medico");
+                    response.msg.Add("Erro ao atualizar o médico");
                     return response;
                 }
 
